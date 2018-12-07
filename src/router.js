@@ -24,6 +24,14 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+    {
+      path: '/call',
+      name: 'call',
+      component: () => import('./views/Call.vue'),
+      meta: {
+        requiresAuth: true,
+      },
+    },
   ],
 });
 
