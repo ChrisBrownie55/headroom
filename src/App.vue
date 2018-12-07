@@ -7,26 +7,27 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import Loading from './components/Loading';
+  import Loading from './components/Loading.vue';
 
   export default {
     computed: {
-      ...mapGetters(['ready'])
+      ...mapGetters(['ready']),
     },
     components: {
-      Loading
-    }
+      Loading,
+    },
   };
 </script>
 
 <style lang="scss">
   #app {
+    --vue-green: #42b983;
+
+    color: #2c3e50;
+
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
-
-    --vue-green: #42b983;
   }
 </style>

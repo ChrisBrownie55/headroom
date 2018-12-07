@@ -2,9 +2,9 @@
   <p class="loading">Loading...</p>
 </template>
 <script>
-  export default {
-    name: "loading"
-  };
+export default {
+  name: 'loading',
+};
 </script>
 <style lang="scss">
   .loading {
@@ -12,6 +12,7 @@
     top: 50%;
 
     color: #42b983;
+    text-align: center;
 
     transform: translateY(-50%);
   }
