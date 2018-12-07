@@ -11,37 +11,39 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import Loading from '@/components/Loading.vue';
+import { mapGetters } from 'vuex';
+import Loading from '@/components/Loading.vue';
 
-  const DEFAULT_TRANSITION = 'fade';
+const DEFAULT_TRANSITION = 'fade';
 
-  export default {
-    data() {
-      transitionName: DEFAULT_TRANSITION
-    },
-    created() {
-      this.$router.beforeEach((to, from, next) => {
-        let transitionName = to.meta.transitionName || from.meta.transitionName;
+export default {
+  data() {
+    return {
+      transitionName: DEFAULT_TRANSITION,
+    };
+  },
+  created() {
+    this.$router.beforeEach((to, from, next) => {
+      let transitionName = to.meta.transitionName || from.meta.transitionName;
 
-        if (transitionName === 'slide') {
-          const toDepth = to.split('/').length;
-          const fromDepth = to.split('/').length;
-          transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
-        }
+      if (transitionName === 'slide') {
+        const toDepth = to.split('/').length;
+        const fromDepth = to.split('/').length;
+        transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+      }
 
-        this.transitionName = transitionName || DEFAULT_TRANSITION;
+      this.transitionName = transitionName || DEFAULT_TRANSITION;
 
-        next();
-      });
-    },
-    computed: {
-      ...mapGetters(['ready']),
-    },
-    components: {
-      Loading,
-    },
-  };
+      next();
+    });
+  },
+  computed: {
+    ...mapGetters(['ready']),
+  },
+  components: {
+    Loading,
+  },
+};
 </script>
 
 <style lang="scss">
