@@ -1,19 +1,27 @@
 <template>
   <p class="loading">Loading...</p>
 </template>
+
 <script>
-export default {
-  name: 'loading',
-};
+  export default {
+    name: 'loading',
+  };
 </script>
+
 <style lang="scss">
   .loading {
     position: absolute;
     top: 50%;
+    left: 50%;
 
-    color: #42b983;
-    text-align: center;
+    padding: 0.15rem 0.45rem;
+    margin: 0;
 
-    transform: translateY(-50%);
+    color: white;
+    background-color: hsl(153, 47%, 49%);
+
+    border-radius: 4px;
+
+    transform: translate(-50%, -50%);
   }
 </style>

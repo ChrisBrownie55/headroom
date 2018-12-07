@@ -20,8 +20,16 @@
 </script>
 
 <style lang="scss">
+  body {
+    margin: 0;
+  }
+
   #app {
     --vue-green: #42b983;
+
+    position: relative;
+
+    min-height: 100vh;
 
     color: #2c3e50;
 
