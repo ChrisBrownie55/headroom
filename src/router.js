@@ -1,25 +1,56 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import store from './store';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/Login.vue'),
+      meta: {
+        requiresNoAuth: true,
+      },
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/',
+      name: 'home',
+      component: () => import('./views/Home.vue'),
+      meta: {
+        requiresAuth: true,
+      },
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (
+    to.matched.some(route => route.meta.requiresAuth)
+    && !store.getters.loggedIn
+  ) {
+    // Redirect to original destination
+    // after logging in
+
+    if (to.name !== 'login') {
+      store.dispatch('SET_REROUTE', { name: to.name, params: to.params });
+    }
+
+    next({ name: 'login' });
+  } else if (
+    to.matched.some(route => route.meta.requiresNoAuth)
+    && store.getters.loggedIn
+  ) {
+    // Redirect to home if trying to log in
+    // but already authenticated
+
+    next({ name: 'home' });
+  } else {
+    next();
+  }
+});
+
+export default router;
