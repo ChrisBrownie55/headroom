@@ -22,6 +22,7 @@ const router = new Router({
       component: () => import('./views/Home.vue'),
       meta: {
         requiresAuth: true,
+        transitionName: 'slide',
       },
     },
     {
@@ -30,6 +31,7 @@ const router = new Router({
       component: () => import('./views/Call.vue'),
       meta: {
         requiresAuth: true,
+        transitionName: 'slide',
       },
     },
   ],
