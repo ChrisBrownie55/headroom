@@ -55,9 +55,11 @@
     --primary: #37474f;
     --primary-light: #62727b;
     --primary-dark: #102027;
+    --primary-foreground: white;
 
     --secondary: #bdbdbd;
     --secondary-light: #efefef;
+    --secondary-foreground: black;
     // --secondary-dark: #8d8d8d; not planning on using this color.
 
     position: relative;
