@@ -11,39 +11,39 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import Loading from '@/components/Loading.vue';
+  import { mapGetters } from 'vuex';
+  import Loading from '@/components/Loading.vue';
 
-const DEFAULT_TRANSITION = 'fade';
+  const DEFAULT_TRANSITION = 'fade';
 
-export default {
-  data() {
-    return {
-      transitionName: DEFAULT_TRANSITION,
-    };
-  },
-  created() {
-    this.$router.beforeEach((to, from, next) => {
-      let transitionName = to.meta.transitionName || from.meta.transitionName;
+  export default {
+    data() {
+      return {
+        transitionName: DEFAULT_TRANSITION,
+      };
+    },
+    created() {
+      this.$router.beforeEach((to, from, next) => {
+        let transitionName = to.meta.transitionName || from.meta.transitionName;
 
-      if (transitionName === 'slide') {
-        const toDepth = to.split('/').length;
-        const fromDepth = to.split('/').length;
-        transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
-      }
+        if (transitionName === 'slide') {
+          const toDepth = to.split('/').length;
+          const fromDepth = to.split('/').length;
+          transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+        }
 
-      this.transitionName = transitionName || DEFAULT_TRANSITION;
+        this.transitionName = transitionName || DEFAULT_TRANSITION;
 
-      next();
-    });
-  },
-  computed: {
-    ...mapGetters('auth', ['ready']),
-  },
-  components: {
-    Loading,
-  },
-};
+        next();
+      });
+    },
+    computed: {
+      ...mapGetters('auth', ['ready']),
+    },
+    components: {
+      Loading,
+    },
+  };
 </script>
 
 <style lang="scss">
@@ -52,6 +52,14 @@ export default {
   }
 
   #app {
+    --primary: #37474f;
+    --primary-light: #62727b;
+    --primary-dark: #102027;
+
+    --secondary: #bdbdbd;
+    --secondary-light: #efefef;
+    // --secondary-dark: #8d8d8d; not planning on using this color.
+
     position: relative;
 
     min-height: 100vh;
