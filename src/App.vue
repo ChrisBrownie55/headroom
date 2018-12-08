@@ -38,7 +38,7 @@ export default {
     });
   },
   computed: {
-    ...mapGetters(['ready']),
+    ...mapGetters('auth', ['ready']),
   },
   components: {
     Loading,
