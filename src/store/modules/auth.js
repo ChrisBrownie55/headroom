@@ -23,7 +23,7 @@ export const mutations = {
 export const actions = {
   init({ commit }) {
     auth.onAuthStateChanged(user => {
-      commit('SET_USER', null);
+      commit('SET_USER', user);
     });
   },
 
