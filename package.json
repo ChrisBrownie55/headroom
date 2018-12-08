@@ -41,7 +41,8 @@
     "rules": {
       "arrow-parens": ["error", "as-needed"],
       "no-shadow": ["error", { "allow": ["state"]}],
-      "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"]}]
+      "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"]}],
+      "no-plusplus": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
