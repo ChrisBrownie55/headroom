@@ -3,18 +3,22 @@
     <img
       alt="Vue logo"
       src="../assets/logo.png"
-    >
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    />
+    <GoogleSignInButton @click="login" />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+  import { mapActions } from 'vuex';
+  import GoogleSignInButton from '@/components/GoogleSignInButton.vue';
 
-export default {
-  name: 'login',
-  components: {
-    HelloWorld,
-  },
-};
+  export default {
+    name: 'login',
+    methods: {
+      ...mapActions('auth', ['login']),
+    },
+    components: {
+      GoogleSignInButton
+    },
+  };
 </script>

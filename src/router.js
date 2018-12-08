@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
     // after logging in
 
     if (to.name !== 'login') {
-      store.dispatch('SET_REROUTE', { name: to.name, params: to.params });
+      store.dispatch('setRerouteTo', { name: to.name, params: to.params });
     }
 
     next({ name: 'login' });
