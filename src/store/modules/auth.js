@@ -21,6 +21,12 @@ export const mutations = {
 };
 
 export const actions = {
+  init({ commit }) {
+    auth.onAuthStateChanged(user => {
+      commit('SET_USER', user);
+    });
+  },
+
   setRerouteTo({ commit }, route) {
     commit('SET_REROUTE', route);
   },
