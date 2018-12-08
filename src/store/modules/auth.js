@@ -23,16 +23,15 @@ export const mutations = {
 export const actions = {
   init({ commit }) {
     auth.onAuthStateChanged(user => {
-      commit('SET_USER', user);
+      commit('SET_USER', null);
     });
   },
 
   setRerouteTo({ commit }, route) {
     commit('SET_REROUTE', route);
   },
-  async login({
-    commit, dispatch, rootDispatch, state,
-  }) {
+
+  async login({ commit, dispatch, state }) {
     try {
       const { user } = await auth.signInWithPopup(provider);
       commit('SET_USER', user);
@@ -40,7 +39,7 @@ export const actions = {
       router.push(state.reroute || { name: 'home' });
       await dispatch('setRerouteTo', null);
     } catch (error) {
-      rootDispatch('notify', {
+      this.dispatch('notify', {
         message: 'An error occurred, please try again.',
         button: {
           text: 'Try again',
@@ -49,13 +48,13 @@ export const actions = {
       });
     }
   },
-  async logout({ commit, dispatch, rootDispatch }) {
+  async logout({ commit, dispatch }) {
     try {
       await auth.signOut();
       commit('SET_USER', null);
       router.push({ name: 'login' });
     } catch (error) {
-      rootDispatch('notify', {
+      this.dispatch('notify', {
         message: 'An error occurred, please try again.',
         button: {
           text: 'Try again',
