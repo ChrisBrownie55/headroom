@@ -1,4 +1,5 @@
 import { auth, provider } from '../../firebase';
+import router from '../../router';
 
 export const state = {
   user: undefined,
@@ -23,10 +24,15 @@ export const actions = {
   setRerouteTo({ commit }, route) {
     commit('SET_REROUTE', route);
   },
-  async login({ commit, dispatch, rootDispatch }) {
+  async login({
+    commit, dispatch, rootDispatch, state,
+  }) {
     try {
       const { user } = await auth.signInWithPopup(provider);
       commit('SET_USER', user);
+
+      router.push(state.reroute || { name: 'home' });
+      await dispatch('setRerouteTo', null);
     } catch (error) {
       rootDispatch('notify', {
         message: 'An error occurred, please try again.',
@@ -41,6 +47,7 @@ export const actions = {
     try {
       await auth.signOut();
       commit('SET_USER', null);
+      router.push({ name: 'login' });
     } catch (error) {
       rootDispatch('notify', {
         message: 'An error occurred, please try again.',

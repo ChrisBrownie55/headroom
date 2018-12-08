@@ -22,11 +22,11 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    notify({ commit, dispatch }, notification) {
+    notify({ commit }, notification) {
       const id = notificationID++;
       commit('ADD_NOTIFICATION', {
         ...notification,
-        remove: () => dispatch('REMOVE_NOTIFICATION', id),
+        remove: () => commit('REMOVE_NOTIFICATION', id),
         id,
       });
     },
