@@ -27,8 +27,8 @@
         let transitionName = to.meta.transitionName || from.meta.transitionName;
 
         if (transitionName === 'slide') {
-          const toDepth = to.split('/').length;
-          const fromDepth = to.split('/').length;
+          const toDepth = to.path.split('/').length;
+          const fromDepth = to.path.split('/').length;
           transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
         }
 
@@ -64,6 +64,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
+
+    overflow-x: hidden;
   }
 
   .slide-left-enter-active,
