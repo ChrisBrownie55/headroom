@@ -23,6 +23,7 @@ export const mutations = {
 export const actions = {
   init({ commit }) {
     auth.onAuthStateChanged(user => {
+      console.log('auth state changed!');
       commit('SET_USER', user);
     });
   },
@@ -32,6 +33,7 @@ export const actions = {
   },
 
   async login({ commit, dispatch, state }) {
+    console.log('logging in...');
     try {
       const { user } = await auth.signInWithPopup(provider);
       commit('SET_USER', user);
