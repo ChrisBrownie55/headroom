@@ -38,9 +38,11 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  const loggedIn = store.getters['auth/isLoggedIn'];
+
   if (
     to.matched.some(route => route.meta.requiresAuth)
-    && !store.getters.loggedIn
+    && !loggedIn
   ) {
     // Redirect to original destination
     // after logging in
@@ -52,7 +54,7 @@ router.beforeEach((to, from, next) => {
     next({ name: 'login' });
   } else if (
     to.matched.some(route => route.meta.requiresNoAuth)
-    && store.getters.loggedIn
+    && loggedIn
   ) {
     // Redirect to home if trying to log in
     // but already authenticated
