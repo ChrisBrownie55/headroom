@@ -1,0 +1,27 @@
+{
+  "name": "headroom",
+  "version": "1.0.0",
+  "description": "A peer to peer video chat web app",
+  "repository": "git@github.com:ChrisBrownie55/headroom.git",
+  "author": "Christopher Brown <chbphone55@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "htm": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-htm": "^1.0.1",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
