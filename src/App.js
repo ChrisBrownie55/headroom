@@ -1,13 +1,11 @@
-// class App extends Component {
-//   render() {
-//     return html`
-//       <main>
-//         <h1>Test</h1>
-//       </main>
-//     `;
-//   }
-// }
+class App extends React.Component {
+  render() {
+    return html`
+      <main>
+        <h1>Test</h1>
+      </main>
+    `;
+  }
+}
 
-// export default App;
-
-export default () => html`<p>Test</p>`;
+export default App;
