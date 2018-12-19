@@ -1,5 +1,5 @@
 language: node_js
 node:
-  - "node"
+  - 11
 cache: yarn
 install: yarn
