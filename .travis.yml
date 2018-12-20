@@ -1,6 +1,6 @@
 # Setup Node
 language: node_js
-node:
+node_js:
   - 11
 
 # Setup Yarn
