@@ -1,5 +1,5 @@
-import html from './html';
+test('HTM is bound to React.createElement', () => {
+  const div = html`<div></div>`;
 
-test('Binded HTM is exported', () => {
-
-})
+  expect(div['$$typeof'].toString()).toBe('Symbol(react.element)');
+});
