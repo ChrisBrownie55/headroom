@@ -3,3 +3,4 @@ node:
   - 11
 cache: yarn
 install: yarn
+script: yarn test
