@@ -1,6 +1,4 @@
-console.log('HELLO FROM BABEL!!!!!!!');
 module.exports = api => {
-  console.log('RUNNING BABEL!!!!!!!!');
   const isProduction = api.cache(() => process.env.NODE_ENV === "production");
 
   const presets = ['@babel/env'];
