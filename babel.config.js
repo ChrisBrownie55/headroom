@@ -8,7 +8,12 @@ module.exports = api => {
     '@babel/plugin-transform-react-display-name',
     ['auto-import', {
       'declarations': [
-        { 'default': 'React', 'members': ['Component', 'PureComponent'], 'path': 'react' },
+        {
+          'default': 'React', 'members': [
+            'Component', 'PureComponent', 'useState', 'useEffect',
+            'useRef', 'useReducer', 'useContext', 'useMemo', 'useCallback'
+          ], 'path': 'react'
+        },
         { 'default': 'ReactDOM', 'path': 'react-dom' },
         { 'default': 'html', 'path': join(__dirname, 'src', 'html.js') },
         { 'default': 'enzyme', 'members': ['shallow'], 'path': 'enzyme' }
