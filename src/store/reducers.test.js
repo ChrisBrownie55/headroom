@@ -77,6 +77,15 @@ describe('The reducer', () => {
             callee: fakeUser
           });
       });
+
+      it('a call with fakeUser has ended', () => {
+        expect(reducers.callState({ state: null, caller: null, callee: fakeUser }, actions.callEnded()))
+          .toEqual({
+            state: actions.ENDED,
+            caller: null,
+            callee: fakeUser
+          });
+      });
     });
   });
 });

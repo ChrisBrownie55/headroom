@@ -4,7 +4,8 @@ import {
   RECEIVING,
   OUTGOING,
   REJECTED,
-  ONGOING
+  ONGOING,
+  ENDED
 } from './actions';
 
 export const user = (state = null, action) => {
@@ -48,6 +49,11 @@ export const callState = (state = { state: null, caller: null, callee: null }, a
       return {
         ...state,
         state: ONGOING
+      };
+    case ENDED:
+      return {
+        ...state,
+        state: ENDED
       };
     default:
       return state;
