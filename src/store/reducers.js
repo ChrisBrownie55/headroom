@@ -75,3 +75,11 @@ export const callHistory = (state = [], action) => {
       return state;
   }
 };
+
+
+export const videoStream = (state = { local: null, remote: null }, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}

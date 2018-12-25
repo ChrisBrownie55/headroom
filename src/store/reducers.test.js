@@ -39,7 +39,7 @@ describe('The reducer', () => {
 
   // CALL STATE
   describe('for callState', () => {
-    test('should default to null', () => {
+    test('should default to nulled values', () => {
       expect(reducers.callState(undefined, {}))
         .toEqual({
           state: null,
@@ -108,6 +108,16 @@ describe('The reducer', () => {
 
     test('should update with new call', () => {
       expect(reducers.callHistory(undefined, actions.addCallToHistory(fakeCallHistory[0]))).toEqual([fakeCallHistory[0]]);
+    });
+  });
+
+  // VIDEO STREAM
+  describe('for videoStream', () => {
+    test('should default to nulled values', () => {
+      expect(reducers.videoStream(undefined, {})).toEqual({
+        local: null,
+        remote: null
+      });
     });
   })
 });
