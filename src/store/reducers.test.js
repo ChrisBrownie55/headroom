@@ -16,6 +16,7 @@ describe('The reducer', () => {
     });
   });
 
+  // CONTACTS
   describe('for contacts', () => {
     it('should default to an empty array', () => {
       const contacts = reducers.contacts(undefined, {});
@@ -26,6 +27,47 @@ describe('The reducer', () => {
 
     it('should update contacts with new value', () => {
       expect(reducers.contacts(undefined, actions.setContacts(fakeContacts))).toBe(fakeContacts);
+    });
+  });
+
+  // CALL STATE
+  describe('for callState', () => {
+    it('should default to null', () => {
+      expect(reducers.callState(undefined, {}))
+        .toEqual({
+          callState: null,
+          caller: null,
+          callee: null
+        });
+    });
+
+    describe('should indicate', () => {
+      it('receiving a call from fakeUser', () => {
+        expect(reducers.callState(undefined, actions.receivingCallFrom(fakeUser)))
+          .toEqual({
+            callState: actions.RECEIVING,
+            caller: fakeUser,
+            callee: null
+          });
+      });
+
+      it('an outgoing call to fakeUser', () => {
+        expect(reducers.callState(undefined, actions.outgoingCallTo(fakeUser)))
+          .toEqual({
+            callState: actions.OUTGOING,
+            caller: null,
+            callee: fakeUser
+          });
+      });
+
+      it('a rejected call from null', () => {
+        expect(reducers.callState({ callee: fakeUser }, actions.callRejected()))
+          .toEqual({
+            callState: actions.REJECTED,
+            caller: null,
+            callee: fakeUser
+          });
+      });
     });
   });
 })
