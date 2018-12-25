@@ -1,11 +1,14 @@
 import {
   SET_USER,
   SET_CONTACTS,
+  ADD_CONTACT,
   RECEIVING,
   OUTGOING,
   REJECTED,
   ONGOING,
-  ENDED
+  ENDED,
+  SET_CALL_HISTORY,
+  ADD_CALL_TO_HISTORY
 } from './actions';
 
 export const user = (state = null, action) => {
@@ -21,6 +24,8 @@ export const contacts = (state = [], action) => {
   switch (action.type) {
     case SET_CONTACTS:
       return action.payload;
+    case ADD_CONTACT:
+      return state.concat(action.payload);
     default:
       return state;
   }
@@ -62,6 +67,10 @@ export const callState = (state = { state: null, caller: null, callee: null }, a
 
 export const callHistory = (state = [], action) => {
   switch (action.type) {
+    case SET_CALL_HISTORY:
+      return action.payload;
+    case ADD_CALL_TO_HISTORY:
+      return state.concat(action.payload);
     default:
       return state;
   }

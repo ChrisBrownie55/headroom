@@ -12,6 +12,12 @@ export const setContacts = contacts => ({
   payload: contacts
 });
 
+export const ADD_CONTACT = 'ADD_CONTACT';
+export const addContact = contact => ({
+  type: ADD_CONTACT,
+  payload: contact
+});
+
 // call state
 export const RECEIVING = 'RECEIVING';
 export const receivingCallFrom = caller => ({
@@ -38,4 +44,17 @@ export const ongoingCall = () => ({
 export const ENDED = 'ENDED';
 export const callEnded = () => ({
   type: ENDED
+});
+
+// call history
+export const SET_CALL_HISTORY = 'SET_CALL_HISTORY';
+export const setCallHistory = history => ({
+  type: SET_CALL_HISTORY,
+  payload: history
+});
+
+export const ADD_CALL_TO_HISTORY = 'ADD_CALL_TO_HISTORY';
+export const addCallToHistory = call => ({
+  type: ADD_CALL_TO_HISTORY,
+  payload: call
 });

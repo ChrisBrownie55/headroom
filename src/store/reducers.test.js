@@ -3,6 +3,7 @@ import * as actions from './actions';
 
 const fakeUser = { name: 'lorem' };
 const fakeContacts = [{ name: 'ipsum' }];
+const fakeCallHistory = [{ to: { name: 'lorem' }, from: { name: 'ipsum' } }];
 
 const expectEmptyArray = arr => {
   expect(Array.isArray(arr)).toEqual(true);
@@ -12,29 +13,33 @@ const expectEmptyArray = arr => {
 describe('The reducer', () => {
   // USER
   describe('for user', () => {
-    it('should default to null', () => {
+    test('should default to null', () => {
       expect(reducers.user(undefined, {})).toEqual(null);
     });
 
-    it('should update user with new value', () => {
+    test('should update user with new value', () => {
       expect(reducers.user(undefined, actions.setUser(fakeUser))).toBe(fakeUser);
     });
   });
 
   // CONTACTS
   describe('for contacts', () => {
-    it('should default to an empty array', () => {
+    test('should default to an empty array', () => {
       expectEmptyArray(reducers.contacts(undefined, {}));
     });
 
-    it('should update contacts with new value', () => {
+    test('should update contacts with new value', () => {
       expect(reducers.contacts(undefined, actions.setContacts(fakeContacts))).toBe(fakeContacts);
+    });
+
+    test('should update with new contact', () => {
+      expect(reducers.contacts(undefined, actions.addContact(fakeContacts[0]))).toEqual([fakeContacts[0]]);
     });
   });
 
   // CALL STATE
   describe('for callState', () => {
-    it('should default to null', () => {
+    test('should default to null', () => {
       expect(reducers.callState(undefined, {}))
         .toEqual({
           state: null,
@@ -44,7 +49,7 @@ describe('The reducer', () => {
     });
 
     describe('should indicate', () => {
-      it('receiving a call from fakeUser', () => {
+      test('receiving a call from fakeUser', () => {
         expect(reducers.callState(undefined, actions.receivingCallFrom(fakeUser)))
           .toEqual({
             state: actions.RECEIVING,
@@ -53,7 +58,7 @@ describe('The reducer', () => {
           });
       });
 
-      it('an outgoing call to fakeUser', () => {
+      test('an outgoing call to fakeUser', () => {
         expect(reducers.callState(undefined, actions.outgoingCallTo(fakeUser)))
           .toEqual({
             state: actions.OUTGOING,
@@ -62,7 +67,7 @@ describe('The reducer', () => {
           });
       });
 
-      it('a rejected call to fakeUser', () => {
+      test('a rejected call to fakeUser', () => {
         expect(reducers.callState({ state: null, caller: null, callee: fakeUser }, actions.callRejected()))
           .toEqual({
             state: actions.REJECTED,
@@ -71,7 +76,7 @@ describe('The reducer', () => {
           });
       });
 
-      it('an ongoing call to fakeUser', () => {
+      test('an ongoing call to fakeUser', () => {
         expect(reducers.callState({ state: null, caller: null, callee: fakeUser }, actions.ongoingCall()))
           .toEqual({
             state: actions.ONGOING,
@@ -80,7 +85,7 @@ describe('The reducer', () => {
           });
       });
 
-      it('a call with fakeUser has ended', () => {
+      test('a call with fakeUser has ended', () => {
         expect(reducers.callState({ state: null, caller: null, callee: fakeUser }, actions.callEnded()))
           .toEqual({
             state: actions.ENDED,
@@ -93,8 +98,16 @@ describe('The reducer', () => {
 
   // CALL HISTORY
   describe('for callHistory', () => {
-    it('should default to an empty array', () => {
+    test('should default to an empty array', () => {
       expectEmptyArray(reducers.callHistory(undefined, {}));
+    });
+
+    test('should update with new values', () => {
+      expect(reducers.callHistory(undefined, actions.setCallHistory(fakeCallHistory))).toBe(fakeCallHistory);
+    });
+
+    test('should update with new call', () => {
+      expect(reducers.callHistory(undefined, actions.addCallToHistory(fakeCallHistory[0]))).toEqual([fakeCallHistory[0]]);
     });
   })
 });
