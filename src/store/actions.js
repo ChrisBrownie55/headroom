@@ -58,3 +58,15 @@ export const addCallToHistory = call => ({
   type: ADD_CALL_TO_HISTORY,
   payload: call
 });
+
+export const SET_LOCAL_STREAM = 'SET_LOCAL_STREAM';
+export const setLocalStream = stream => ({
+  type: SET_LOCAL_STREAM,
+  payload: stream
+});
+
+export const SET_REMOTE_STREAM = 'SET_REMOTE_STREAM';
+export const setRemoteStream = stream => ({
+  type: SET_REMOTE_STREAM,
+  payload: stream
+});

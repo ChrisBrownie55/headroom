@@ -4,11 +4,12 @@ import * as actions from './actions';
 const fakeUser = { name: 'lorem' };
 const fakeContacts = [{ name: 'ipsum' }];
 const fakeCallHistory = [{ to: { name: 'lorem' }, from: { name: 'ipsum' } }];
+const fakeVideoStream = { id: 'a1b2c3d4-e5f6g7h8', active: true };
 
 const expectEmptyArray = arr => {
   expect(Array.isArray(arr)).toEqual(true);
   expect(arr).toHaveLength(0);
-}
+};
 
 describe('The reducer', () => {
   // USER
@@ -118,6 +119,22 @@ describe('The reducer', () => {
         local: null,
         remote: null
       });
+    });
+
+    test('should update local stream with fakeVideoStream', () => {
+      expect(reducers.videoStream(undefined, actions.setLocalStream(fakeVideoStream)))
+        .toEqual({
+          local: fakeVideoStream,
+          remote: null
+        });
+    });
+
+    test('should update remote stream with fakeVideoStream', () => {
+      expect(reducers.videoStream(undefined, actions.setRemoteStream(fakeVideoStream)))
+        .toEqual({
+          local: null,
+          remote: fakeVideoStream
+        });
     });
   })
 });

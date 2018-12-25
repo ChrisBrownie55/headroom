@@ -8,7 +8,9 @@ import {
   ONGOING,
   ENDED,
   SET_CALL_HISTORY,
-  ADD_CALL_TO_HISTORY
+  ADD_CALL_TO_HISTORY,
+  SET_LOCAL_STREAM,
+  SET_REMOTE_STREAM
 } from './actions';
 
 export const user = (state = null, action) => {
@@ -79,6 +81,16 @@ export const callHistory = (state = [], action) => {
 
 export const videoStream = (state = { local: null, remote: null }, action) => {
   switch (action.type) {
+    case SET_LOCAL_STREAM:
+      return {
+        ...state,
+        local: action.payload
+      };
+    case SET_REMOTE_STREAM:
+      return {
+        ...state,
+        remote: action.payload
+      };
     default:
       return state;
   }
