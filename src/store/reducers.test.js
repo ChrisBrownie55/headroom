@@ -4,6 +4,11 @@ import * as actions from './actions';
 const fakeUser = { name: 'lorem' };
 const fakeContacts = [{ name: 'ipsum' }];
 
+const expectEmptyArray = arr => {
+  expect(Array.isArray(arr)).toEqual(true);
+  expect(arr).toHaveLength(0);
+}
+
 describe('The reducer', () => {
   // USER
   describe('for user', () => {
@@ -19,10 +24,7 @@ describe('The reducer', () => {
   // CONTACTS
   describe('for contacts', () => {
     it('should default to an empty array', () => {
-      const contacts = reducers.contacts(undefined, {});
-
-      expect(Array.isArray(contacts)).toEqual(true);
-      expect(contacts).toHaveLength(0);
+      expectEmptyArray(reducers.contacts(undefined, {}));
     });
 
     it('should update contacts with new value', () => {
@@ -88,4 +90,11 @@ describe('The reducer', () => {
       });
     });
   });
+
+  // CALL HISTORY
+  describe('for callHistory', () => {
+    it('should default to an empty array', () => {
+      expectEmptyArray(reducers.callHistory(undefined, {}));
+    });
+  })
 });

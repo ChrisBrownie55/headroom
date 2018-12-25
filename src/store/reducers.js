@@ -59,3 +59,10 @@ export const callState = (state = { state: null, caller: null, callee: null }, a
       return state;
   }
 };
+
+export const callHistory = (state = [], action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
