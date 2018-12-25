@@ -35,7 +35,7 @@ describe('The reducer', () => {
     it('should default to null', () => {
       expect(reducers.callState(undefined, {}))
         .toEqual({
-          callState: null,
+          state: null,
           caller: null,
           callee: null
         });
@@ -45,7 +45,7 @@ describe('The reducer', () => {
       it('receiving a call from fakeUser', () => {
         expect(reducers.callState(undefined, actions.receivingCallFrom(fakeUser)))
           .toEqual({
-            callState: actions.RECEIVING,
+            state: actions.RECEIVING,
             caller: fakeUser,
             callee: null
           });
@@ -54,20 +54,29 @@ describe('The reducer', () => {
       it('an outgoing call to fakeUser', () => {
         expect(reducers.callState(undefined, actions.outgoingCallTo(fakeUser)))
           .toEqual({
-            callState: actions.OUTGOING,
+            state: actions.OUTGOING,
             caller: null,
             callee: fakeUser
           });
       });
 
-      it('a rejected call from null', () => {
-        expect(reducers.callState({ callee: fakeUser }, actions.callRejected()))
+      it('a rejected call to fakeUser', () => {
+        expect(reducers.callState({ state: null, caller: null, callee: fakeUser }, actions.callRejected()))
           .toEqual({
-            callState: actions.REJECTED,
+            state: actions.REJECTED,
+            caller: null,
+            callee: fakeUser
+          });
+      });
+
+      it('an ongoing call to fakeUser', () => {
+        expect(reducers.callState({ state: null, caller: null, callee: fakeUser }, actions.ongoingCall()))
+          .toEqual({
+            state: actions.ONGOING,
             caller: null,
             callee: fakeUser
           });
       });
     });
   });
-})
+});

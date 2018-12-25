@@ -9,3 +9,25 @@ export const setContacts = contacts => ({
   type: SET_CONTACTS,
   payload: contacts
 });
+
+export const RECEIVING = 'RECEIVING';
+export const receivingCallFrom = caller => ({
+  type: RECEIVING,
+  payload: caller
+});
+
+export const OUTGOING = 'OUTGOING';
+export const outgoingCallTo = callee => ({
+  type: OUTGOING,
+  payload: callee
+});
+
+export const REJECTED = 'REJECTED';
+export const callRejected = () => ({
+  type: REJECTED
+});
+
+export const ONGOING = 'ONGOING';
+export const ongoingCall = () => ({
+  type: ONGOING
+});

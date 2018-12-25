@@ -1,6 +1,10 @@
 import {
   SET_USER,
-  SET_CONTACTS
+  SET_CONTACTS,
+  RECEIVING,
+  OUTGOING,
+  REJECTED,
+  ONGOING
 } from './actions';
 
 export const user = (state = null, action) => {
@@ -19,4 +23,33 @@ export const contacts = (state = [], action) => {
     default:
       return state;
   }
-}
+};
+
+export const callState = (state = { state: null, caller: null, callee: null }, action) => {
+  switch (action.type) {
+    case RECEIVING:
+      return {
+        state: RECEIVING,
+        caller: action.payload,
+        callee: null
+      };
+    case OUTGOING:
+      return {
+        state: OUTGOING,
+        caller: null,
+        callee: action.payload
+      };
+    case REJECTED:
+      return {
+        ...state,
+        state: REJECTED
+      };
+    case ONGOING:
+      return {
+        ...state,
+        state: ONGOING
+      };
+    default:
+      return state;
+  }
+};
