@@ -1,11 +1,11 @@
-const UPDATE_USER = 'UPDATE_USER';
-
-const updateUser = user => ({
-  type: UPDATE_USER,
+export const SET_USER = 'UPDATE_USER';
+export const setUser = user => ({
+  type: SET_USER,
   payload: user
 });
 
-export {
-  UPDATE_USER,
-  updateUser
-};
+export const SET_CONTACTS = 'SET_CONTACT';
+export const setContacts = contacts => ({
+  type: SET_CONTACTS,
+  payload: contacts
+});
