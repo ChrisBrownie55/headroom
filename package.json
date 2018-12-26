@@ -27,6 +27,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-auto-import": "^1.0.0",
     "babel-plugin-htm": "^1.0.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^2.0.1",
     "eslint": "^5.10.0",

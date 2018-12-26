@@ -1,7 +1,8 @@
 const { join } = require('path');
 
 module.exports = api => {
-  const isProduction = api.cache(() => process.env.NODE_ENV === "production");
+  const isProduction = api.cache(() => process.env.NODE_ENV === 'production');
+  const isTest = api.cache(() => process.env.NODE_ENV === 'test');
 
   const presets = ['@babel/env'];
   const plugins = [
@@ -26,6 +27,11 @@ module.exports = api => {
       pragma: 'React.createElement'
     }]);
   }
+
+  if (isTest || isProduction) {
+    plugins.push('babel-plugin-transform-react-remove-prop-types');
+  }
+
   return {
     presets,
     plugins
