@@ -10,14 +10,16 @@ module.exports = api => {
     ['auto-import', {
       'declarations': [
         {
-          'default': 'React', 'members': [
+          default: 'React',
+          members: [
             'Component', 'PureComponent', 'useState', 'useEffect',
             'useRef', 'useReducer', 'useContext', 'useMemo', 'useCallback'
-          ], 'path': 'react'
+          ],
+          path: 'react'
         },
-        { 'default': 'ReactDOM', 'path': 'react-dom' },
-        { 'default': 'html', 'path': join(__dirname, 'src', 'html.js') },
-        { 'default': 'enzyme', 'members': ['shallow'], 'path': 'enzyme' }
+        { default: 'ReactDOM', path: 'react-dom' },
+        { default: 'PropTypes', path: 'prop-types' },
+        { default: 'html', path: join(__dirname, 'src', 'html.js') }
       ]
     }]
   ];
