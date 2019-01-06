@@ -4,7 +4,7 @@ import { render, waitForElement } from 'react-testing-library';
 describe('<LoadingIndicator />', () => {
   test('should be 320px wide when given said width', () => {
     const { getByTestId } = render(html`<${LoadingIndicator} width="320px" data-testid="loading-indicator" />`)
-    expect(getByTestId('loading-indicator')).toHaveStyle('width: 320px');
+    expect(getByTestId('loading-indicator')).toHaveStyle('--width: 320px');
   });
 
   test('should allow custom colors', () => {
@@ -22,7 +22,7 @@ describe('<LoadingIndicator />', () => {
 
   test('should allow custom label', async () => {
     const labelText = `Checking to see if you're logged in`;
-    const { getByText } = render(html`<${LoadingIndicator} label={labelText} />`);
+    const { getByText } = render(html`<${LoadingIndicator} label=${labelText} />`);
     const label = await waitForElement(() => getByText(labelText));
 
     expect(label).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('<LoadingIndicator />', () => {
   });
 
   test('should indicate completed', async () => {
-    const { getByText } = render(html`<${LoadingIndicator} completed />`);
+    const { getByText } = render(html`<${LoadingIndicator} complete />`);
     const label = await waitForElement(() => getByText('Finished loading!'));
 
     expect(label).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe('<LoadingIndicator />', () => {
 
   test('should allow custom complete label', async () => {
     const labelText = `Checking to see if you're logged in`;
-    const { getByText } = render(html`<${LoadingIndicator} complete completeLabel={labelText} />`);
+    const { getByText } = render(html`<${LoadingIndicator} complete completeLabel=${labelText} />`);
     const label = await waitForElement(() => getByText(labelText));
 
     expect(label).toBeInTheDocument();

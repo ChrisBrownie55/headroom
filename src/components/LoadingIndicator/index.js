@@ -16,11 +16,11 @@ const LoadingIndicator = ({
   <div
     className=${classNames('loading-indicator', { 'loading-indicator__bar--complete': complete }, className)}
     style=${{
-    '--width': width,
-    '--color': color,
-    '--complete': completeColor,
-    '--background': backgroundColor
-  }}
+      '--width': width,
+      '--color': color,
+      '--complete': completeColor,
+      '--background': backgroundColor
+    }}
     ...${props}
   >
     <div className=loading-indicator__bar></div>
