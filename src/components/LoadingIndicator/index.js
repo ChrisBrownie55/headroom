@@ -9,12 +9,12 @@ const LoadingIndicator = ({
 
   label = 'Loading...',
   complete = false,
-  completeLabel = 'Finished loading!',
+  completeLabel = 'Finished loading',
   className,
   ...props
 }) => html`
   <div
-    className=${classNames('loading-indicator', { 'loading-indicator__bar--complete': complete }, className)}
+    className=${classNames('loading-indicator', { 'loading-indicator--complete': complete }, className)}
     style=${{
       '--width': width,
       '--color': color,

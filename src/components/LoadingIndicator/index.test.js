@@ -31,7 +31,7 @@ describe('<LoadingIndicator />', () => {
 
   test('should indicate completed', async () => {
     const { getByText } = render(html`<${LoadingIndicator} complete />`);
-    const label = await waitForElement(() => getByText('Finished loading!'));
+    const label = await waitForElement(() => getByText('Finished loading'));
 
     expect(label).toBeInTheDocument();
     expect(label).toBeVisible();

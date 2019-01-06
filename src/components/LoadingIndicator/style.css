@@ -5,10 +5,6 @@
   max-width: calc(100% - 2rem);
 }
 
-.loading-indicator--complete > .loading-indicator__bar::after {
-  background-color: var(--complete, #1B9A59);
-}
-
 .loading-indicator__bar {
   position: relative;
   overflow: hidden;
@@ -18,6 +14,7 @@
   margin-bottom: 0.5rem;
 
   background-color: var(--background, #eee);
+  transition: background-color 0.25s ease-in-out;
 }
 
 .loading-indicator__bar::after {
@@ -32,6 +29,14 @@
   transition: background-color 0.25s ease-in-out;
 
   animation: loading-indicator__bar 1.5s infinite ease-in-out;
+}
+
+.loading-indicator--complete > .loading-indicator__bar {
+  background-color: var(--complete, hsl(149, 70%, 45%));
+}
+
+.loading-indicator--complete > .loading-indicator__bar::after {
+  background-color: var(--complete, hsl(149, 70%, 45%));
 }
 
 .loading-indicator__label {
