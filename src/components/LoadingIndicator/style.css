@@ -1,0 +1,50 @@
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  width: var(--width, 20rem);
+  max-width: calc(100% - 2rem);
+}
+
+.loading-indicator--complete > .loading-indicator__bar::after {
+  background-color: var(--complete, #1B9A59);
+}
+
+.loading-indicator__bar {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  height: 6px;
+  margin-bottom: 1rem;
+
+  background-color: var(--background, #eee);
+}
+
+.loading-indicator__bar::after {
+  content: '';
+
+  position: absolute;
+
+  width: 50%;
+  height: 100%;
+
+  background-color: var(--color, #4285F4);
+  transition: background-color 0.25s ease-in-out;
+
+  animation: loading-indicator__bar 1s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.loading-indicator__label {
+  text-align: center;
+}
+
+@keyframes loading-indicator__bar {
+  from {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  90%, to {
+    left: 100%;
+    transform: translateX(0);
+  }
+}
