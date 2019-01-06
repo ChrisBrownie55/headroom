@@ -10,10 +10,12 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "lint": "eslint",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@babel/plugin-transform-react-display-name": "^7.2.0",
+    "@chbphone55/classnames": "^1.0.2",
     "htm": "^2.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -23,6 +25,8 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
+    "@storybook/addon-a11y": "^4.1.4",
+    "@storybook/react": "^4.1.4",
     "babel-7-jest": "^21.3.3",
     "babel-loader": "^8.0.4",
     "babel-plugin-auto-import": "^1.0.0",
