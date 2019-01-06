@@ -14,8 +14,8 @@
   overflow: hidden;
 
   width: 100%;
-  height: 6px;
-  margin-bottom: 1rem;
+  height: 4px;
+  margin-bottom: 0.5rem;
 
   background-color: var(--background, #eee);
 }
@@ -31,20 +31,21 @@
   background-color: var(--color, #4285F4);
   transition: background-color 0.25s ease-in-out;
 
-  animation: loading-indicator__bar 1s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: loading-indicator__bar 1.5s infinite ease-in-out;
 }
 
 .loading-indicator__label {
   text-align: center;
+  font-family: system-ui;
 }
 
 @keyframes loading-indicator__bar {
-  from {
-    left: 0;
+  from, to {
+    left: 10%;
     transform: translateX(-100%);
   }
-  90%, to {
-    left: 100%;
+  50% {
+    left: 90%;
     transform: translateX(0);
   }
 }
