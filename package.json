@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.0",
     "@storybook/addon-a11y": "^4.1.4",
     "@storybook/react": "^4.1.4",
@@ -37,6 +38,7 @@
     "eslint": "^5.10.0",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "ignore-styles": "^5.0.1",
     "jest": "^23.6.0",
     "jest-dom": "^3.0.0",
     "path": "^0.12.7",

@@ -24,7 +24,7 @@ module.exports = api => {
       {
         default: 'React',
         members: [
-          'Component', 'PureComponent', 'useState', 'useEffect',
+          'Component', 'PureComponent', 'memo', 'useState', 'useEffect',
           'useRef', 'useReducer', 'useContext', 'useMemo', 'useCallback'
         ],
         path: 'react'
