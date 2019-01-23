@@ -78,7 +78,6 @@ export const callHistory = (state = [], action) => {
   }
 };
 
-
 export const videoStream = (state = { local: null, remote: null }, action) => {
   switch (action.type) {
     case SET_LOCAL_STREAM:
