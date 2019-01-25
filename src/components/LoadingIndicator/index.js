@@ -1,3 +1,5 @@
+import { useTransition, animated } from 'react-spring/hooks';
+
 import classNames from '@chbphone55/classnames';
 import './style.css';
 
@@ -12,21 +14,36 @@ const LoadingIndicator = ({
   completeLabel = 'Finished loading',
   className,
   ...props
-}) => html`
-  <div
-    className=${classNames('loading-indicator', { 'loading-indicator--complete': complete }, className)}
-    style=${{
-      '--width': width,
-      '--color': color,
-      '--complete': completeColor,
-      '--background': backgroundColor
-    }}
-    ...${props}
-  >
-    <div className=loading-indicator__bar></div>
-    <span className=loading-indicator__label>${complete ? completeLabel : label}</span>
-  </div>
-`;
+}) => {
+  const labels = useTransition({
+    items: complete ? completeLabel : label,
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  });
+
+  const labelList = labels.map(
+    ({ item, key, props }) => html`<${animated.span} className="loading-indicator__label">${item}</>`
+  );
+
+  html`
+    <div
+      className=${classNames('loading-indicator', { 'loading-indicator--complete': complete }, className)}
+      style=${
+        {
+          '--width': width,
+          '--color': color,
+          '--complete': completeColor,
+          '--background': backgroundColor
+        }
+      }
+      ...${props}
+    >
+      <div className="loading-indicator__bar"></div>
+      ${labelList}
+    </div>
+  `;
+};
 
 LoadingIndicator.propTypes = {
   // style
