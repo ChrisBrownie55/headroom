@@ -27,7 +27,7 @@ const LoadingIndicator = ({
       html`<${animated.span} key=${key} style=${props} className="loading-indicator__label">${item}</>`
   );
 
-  html`
+  return html`
     <div
       className=${classNames('loading-indicator', { 'loading-indicator--complete': complete }, className)}
       style=${
