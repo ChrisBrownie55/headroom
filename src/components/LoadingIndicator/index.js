@@ -1,4 +1,4 @@
-import { useTransition, animated } from 'react-spring/hooks';
+import { useTransition, animated } from 'react-spring/hooks.cjs';
 
 import classNames from '@chbphone55/classnames';
 import './style.css';
@@ -23,7 +23,8 @@ const LoadingIndicator = ({
   });
 
   const labelList = labels.map(
-    ({ item, key, props }) => html`<${animated.span} className="loading-indicator__label">${item}</>`
+    ({ item, key, props }) =>
+      html`<${animated.span} key=${key} style=${props} className="loading-indicator__label">${item}</>`
   );
 
   html`
