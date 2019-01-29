@@ -15,16 +15,16 @@ const LoadingIndicator = ({
   className,
   ...props
 }) => {
-  const labels = useTransition({
-    items: complete ? completeLabel : label,
+  const transition = useTransition(complete, p => p, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
 
-  const labelList = labels.map(
-    ({ item, key, props }) =>
-      html`<${animated.span} key=${key} style=${props} className="loading-indicator__label">${item}</>`
+  const theLabel = transition.map(
+    ({ item, key, props }) => html`
+      <${animated.span} key=${key} style=${props} className="loading-indicator__label">${item ? completeLabel : label}</>
+    `
   );
 
   return html`
@@ -41,7 +41,7 @@ const LoadingIndicator = ({
       ...${props}
     >
       <div className="loading-indicator__bar"></div>
-      ${labelList}
+      ${theLabel}
     </div>
   `;
 };
@@ -60,4 +60,4 @@ LoadingIndicator.propTypes = {
   className: PropTypes.any
 };
 
-export default memo(LoadingIndicator);
+export default LoadingIndicator;
