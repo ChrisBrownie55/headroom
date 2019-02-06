@@ -16,7 +16,7 @@ const LoadingIndicator = ({
   ...props
 }) => {
   const transition = useTransition(complete, p => p, {
-    from: { opacity: 0 },
+    from: { position: 'absolute', opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
@@ -40,7 +40,7 @@ const LoadingIndicator = ({
       }
       ...${props}
     >
-      <div className="loading-indicator__bar"></div>
+      <div className="loading-indicator__bar" />
       ${theLabel}
     </div>
   `;
